@@ -1,0 +1,6 @@
+#### application.yml  service-edu这个不要加_可能会报错
+spring:
+  application:
+    name: service-organization
+  profiles:
+    active: dev

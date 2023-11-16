@@ -30,6 +30,7 @@
 > 用户登录
 
 打开浏览器，在地址栏输入服务器的IP地址：http://localhost:8080/#/login
+
 进入系统登录界面。用户输入用户名和密码信息，点击【登录】按钮即可完成登录，进入到到首页商品展示页面，如图1-1所示：
 
 ![img](https://cocochimp-markdown-img.oss-cn-beijing.aliyuncs.com/clip_image002.jpg)

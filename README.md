@@ -1,3 +1,5 @@
+# SecondhandShop
+🌈基于SpringBoot，Mybatis Plus，Swagger，fastjson，Vue&Element框架开发的的简麦二手商城平台
 # 运行环境
 
 - java:8（jdk1.8）

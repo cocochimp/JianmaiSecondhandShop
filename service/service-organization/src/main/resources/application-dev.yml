@@ -1,0 +1,73 @@
+####  application-dev.yml
+server:
+  port: 9109
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl   #**d如果不保存日志文件使用
+    map-underscore-to-camel-case: false # 数据库下划线自动转驼峰标示关闭
+  mapper-locations: classpath:com/atguigu/serviceorganization/mapper/xml/*.xml #这个mapper和pom.xml的resourses配置要一起配置才行
+  ## 'mybatis-plus '时,驼峰命名映射是自动开启的
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shopdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 60000
+      idle-timeout: 500000
+      max-lifetime: 540000
+      maximum-pool-size: 12
+      minimum-idle: 10
+      pool-name: GuliHikariPool
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  # nacos服务地址 在实际上127.0.0.1改成你的实际ip
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-idle: 5
+        max-wait: -1
+        min-idle: 0
+        #spring.redis.host=192.168.44.132
+  #**d设置日志级别 如果不保存日志文件使用 输出文件 @slf4全局异常类+logback-spring.xml
+#logging:
+#  level:
+#    root: WARN
+
+#开启熔断机制
+feign:
+  hystrix:
+    enabled: true
+#设置hystrix超时时间 默认1000ms 相当于判定服务挂了的时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+
+
